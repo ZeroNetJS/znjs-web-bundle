@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "browserify -e page.js -d -o bundle.main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "ln -fs ../node_modules/is-buffer zeronet"
   },
   "keywords": [
     "zeronet",
@@ -24,7 +25,7 @@
   "dependencies": {
     "browserify": "^14.4.0",
     "jquery": "^3.2.1",
-    "zeronet": "file:node_modules/zeronet",
-    "zeronet-storage-memory": "file:node_modules/zeronet/zeronet-storage-memory"
+    "zeronet": "file:zeronet",
+    "zeronet-storage-memory": "file:zeronet/zeronet-storage-memory"
   }
 }
