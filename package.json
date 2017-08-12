@@ -4,7 +4,7 @@
   "description": "ZeroNetJS for web-browsers",
   "main": "index.js",
   "scripts": {
-    "build": "browserify zeronet.js -o bundle.main.js",
+    "build": "browserify -e zeronet.js -d -o bundle.main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
