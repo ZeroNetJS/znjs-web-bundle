@@ -23,7 +23,8 @@ module.exports = function ZeroNetBrowserCommon(opt) {
     l.warn = consolePrefix(console.warn, name)
 
     l.error = l.fatal = consolePrefix(console.error, name)
-    
+
     return l
   }
+  self.title=() => {}
 }

@@ -1,14 +1,13 @@
 "use strict"
 
-window.ZeroNet = module.exports = function ZeroNet(config) {
+window.ZeroNet = module.exports = function ZeroNet(config, cb) {
 
   require("colors")
 
   let node
-  //let dwait = require("./lib/hacky-logs.js")
 
   const MergeRecursive = require("merge-recursive")
-  const ZeroNet = require("zeronet-node")
+  const ZeroNet = require("./node.js")
 
   const MEM = require("zeronet-storage-memory")
 
@@ -68,9 +67,7 @@ window.ZeroNet = module.exports = function ZeroNet(config) {
     if (err) return errCB(err)
     config.id = id
     node = new ZeroNet(config)
-    //dwait.map(d => d())
-    //dwait = null
-    node.start(errCB)
+    cb(null, node)
   }
 
   if (!config.id) {

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "browserify -e page.js -d -o bundle.main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "ln -fs ../node_modules/is-buffer zeronet"
+    "postinstall": "ln -fs ../node_modules/is-buffer zeronet",
+    "watch": "nodemon -i bundle.main.js -x npm run build"
   },
   "keywords": [
     "zeronet",

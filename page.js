@@ -3,18 +3,30 @@ let running = false
 const ZeroNet = require("./zeronet.js")
 
 window.onerror = function (messageOrEvent, source, lineno, colno, error) {
-  console.error(messageOrEvent.toString())
+  console.error(messageOrEvent == "Script Error." ? messageOrEvent : error.stack)
 };
 
-$(document).ready(() => (function ($) {
+const $ = window.$ = require("jquery")
+
+$(document).ready(() => (function () {
   'use strict'
 
   function addToLog() {
-    const d = $("<p></p>")
-    let t = [...arguments].join(" ")
-    t = "[" + new Date() + "] " + t
-    d.text(t)
-    $("#logfield").append(d)
+    let t = [...arguments].join(" ").split("\n")
+    t[0] = "[" + new Date() + "] " + t[0]
+    t.forEach(t => {
+      const d = $("<p></p>")
+      let p = false
+      t.split("").forEach(c => {
+        const e = $("<span></span>")
+        if (c != " ") p = true
+        if (!p) e.css("margin-left", "9px")
+        if (c == " ") p = false
+        e.text(c)
+        d.append(e)
+      })
+      $("#logfield").append(d)
+    })
   }
 
   ["log", "error", "warn", "info"].forEach(d => {
@@ -25,12 +37,27 @@ $(document).ready(() => (function ($) {
     }
   })
 
-  $("#node-state").click(() => {
-    if (running) return
+  console.info("Prepare launch")
+  $("#node-state").text("Preparing...")
+
+  ZeroNet({}, (err, node) => {
+    if (err) throw err
+    console.info("Ready to launch")
+    window.node = node
+    $("#node-state").text("Node: Offline (Click to launch)")
+    $("#node-state").click(() => {
+      if (running) return
+      running = true
+      $("#node-state").text("Node: Starting...")
+      node.start(err => {
+        if (err) {
+          $("#node-state").text("Node: Error")
+          throw err
+        } else {
+          $("#node-state").text("Node: Online")
+        }
+      })
+    })
   })
 
-  const node = window.node = new ZeroNet({})
-
-  console.info("Ready to launch")
-
-}(require("jquery"))))
+}()))
