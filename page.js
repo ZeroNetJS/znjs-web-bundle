@@ -13,7 +13,7 @@ $(document).ready(() => (function () {
 
   function addToLog() {
     let t = [...arguments].join(" ").split("\n")
-    t[0] = "[" + new Date() + "] " + t[0]
+    t.unshift("[" + new Date() + "] " + t.shift())
     t.forEach(t => {
       const d = $("<p></p>")
       let p = false

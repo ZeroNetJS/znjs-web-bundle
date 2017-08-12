@@ -7,7 +7,7 @@ window.ZeroNet = module.exports = function ZeroNet(config, cb) {
   let node
 
   const MergeRecursive = require("merge-recursive")
-  const ZeroNet = require("./node.js")
+  const ZeroNet = require("zeronet-node")
 
   const MEM = require("zeronet-storage-memory")
 
@@ -17,14 +17,16 @@ window.ZeroNet = module.exports = function ZeroNet(config, cb) {
 
   const defaults = {
     swarm: {
-      server: false,
-      server6: false,
       protocol: {
         crypto: [
           require("zeronet-crypto/secio")
         ]
+      },
+      libp2p: {
+        transport: []
       }
     },
+    modules: {},
     node: {
       trackers: [
         //"zero://boot3rdez4rzn36x.onion:15441",
@@ -38,9 +40,8 @@ window.ZeroNet = module.exports = function ZeroNet(config, cb) {
         //"http://localhost:25534/announce"
       ]
     },
-    uiserver: false,
     common: cm = new Common({
-      debug: !!process.env.DEBUG
+      debug: true
     }),
     storage: new MEM()
   }

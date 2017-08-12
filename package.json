@@ -2,12 +2,14 @@
   "name": "zeronet-web-bundle",
   "version": "0.0.1",
   "description": "ZeroNetJS for web-browsers",
-  "main": "index.js",
+  "main": "page.js",
+  "browser": {},
   "scripts": {
-    "build": "browserify -e page.js -d -o bundle.main.js",
+    "build": "browserify . -d -o bundle.main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "ln -fs ../node_modules/is-buffer zeronet",
-    "watch": "nodemon -i bundle.main.js -x npm run build"
+    "postinstall": "ln -fs ../node_modules/is-buffer zeronet && rm -rf node_modules/debug && ln -s ../debug node_modules/debug",
+    "watch": "nodemon -i bundle.main.js -x npm run build",
+    "start": "http-server -p 3000 ."
   },
   "keywords": [
     "zeronet",
@@ -22,10 +24,23 @@
   "bugs": {
     "url": "https://github.com/ZeroNetJS/web-bundle/issues"
   },
+  "browserify": {
+    "transform": [
+      "aliasify"
+    ]
+  },
+  "aliasify": {
+    "aliases": {
+      "debug": "./debug/index.js"
+    }
+  },
   "homepage": "https://github.com/ZeroNetJS/web-bundle#readme",
   "dependencies": {
+    "aliasify": "^2.1.0",
     "browserify": "^14.4.0",
+    "http-server": "^0.10.0",
     "jquery": "^3.2.1",
+    "nodemon": "^1.11.0",
     "zeronet": "file:zeronet",
     "zeronet-storage-memory": "file:zeronet/zeronet-storage-memory"
   }
