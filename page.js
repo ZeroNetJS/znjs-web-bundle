@@ -48,7 +48,7 @@ $(document).ready(() => (function () {
 
   ZeroNet({}, (err, node) => {
     if (err) throw err
-    console.info("Ready to launch")
+    console.info("[node] Ready to launch")
     window.node = node
     $("#node-state").text("Node: Offline (Click to launch)")
     $("#node-state").click(() => {
@@ -61,6 +61,7 @@ $(document).ready(() => (function () {
           throw err
         } else {
           $("#node-state").text("Node: Online")
+          console.info("[node] Online")
         }
       })
     })
