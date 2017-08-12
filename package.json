@@ -11,5 +11,16 @@
     "browser"
   ],
   "author": "Maciej Krüger <mkg20001@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZeroNetJS/web-bundle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ZeroNetJS/web-bundle/issues"
+  },
+  "homepage": "https://github.com/ZeroNetJS/web-bundle#readme",
+  "dependencies": {
+    "zeronet": "file:zeronet"
+  }
 }
