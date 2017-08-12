@@ -1,10 +1,12 @@
 let running = false
 
+const ZeroNet = require("./zeronet.js")
+
 window.onerror = function (messageOrEvent, source, lineno, colno, error) {
   console.error(messageOrEvent.toString())
 };
 
-(function ($) {
+$(document).ready(() => (function ($) {
   'use strict'
 
   function addToLog() {
@@ -27,8 +29,8 @@ window.onerror = function (messageOrEvent, source, lineno, colno, error) {
     if (running) return
   })
 
-  const node = new ZeroNet({})
+  const node = window.node = new ZeroNet({})
 
   console.info("Ready to launch")
 
-}(window.jQuery))
+}(require("jquery"))))
