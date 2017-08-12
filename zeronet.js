@@ -5,7 +5,7 @@ module.exports = function ZeroNet(config) {
   require("colors")
 
   let node
-  let dwait = require("./lib/hacky-logs.js")
+  //let dwait = require("./lib/hacky-logs.js")
 
   const MergeRecursive = require("merge-recursive")
   const ZeroNet = require("zeronet-node")
@@ -68,8 +68,8 @@ module.exports = function ZeroNet(config) {
     if (err) return errCB(err)
     config.id = id
     node = new ZeroNet(config)
-    dwait.map(d => d())
-    dwait = null
+    //dwait.map(d => d())
+    //dwait = null
     node.start(errCB)
   }
 

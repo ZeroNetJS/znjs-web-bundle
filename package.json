@@ -4,6 +4,7 @@
   "description": "ZeroNetJS for web-browsers",
   "main": "index.js",
   "scripts": {
+    "build": "browserify zeronet.js -o bundle.main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -21,6 +22,8 @@
   },
   "homepage": "https://github.com/ZeroNetJS/web-bundle#readme",
   "dependencies": {
-    "zeronet": "file:zeronet"
+    "browserify": "^14.4.0",
+    "zeronet": "file:zeronet",
+    "zeronet-storage-memory": "file:zeronet/zeronet-storage-memory"
   }
 }
