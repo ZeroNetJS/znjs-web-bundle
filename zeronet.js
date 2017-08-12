@@ -1,6 +1,6 @@
 "use strict"
 
-module.exports = function ZeroNet(config) {
+window.ZeroNet = module.exports = function ZeroNet(config) {
 
   require("colors")
 
