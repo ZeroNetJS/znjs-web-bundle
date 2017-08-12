@@ -39,7 +39,7 @@ window.ZeroNet = module.exports = function ZeroNet(config) {
         //"http://localhost:25534/announce"
       ]
     },
-    nat: true,
+    uiserver: false,
     common: cm = new Common({
       debug: !!process.env.DEBUG
     }),
