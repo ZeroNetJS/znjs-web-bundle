@@ -40,6 +40,7 @@
     "browserify": "^14.4.0",
     "http-server": "^0.10.0",
     "jquery": "^3.2.1",
+    "moment": "^2.18.1",
     "nodemon": "^1.11.0",
     "zeronet": "file:zeronet",
     "zeronet-storage-memory": "file:zeronet/zeronet-storage-memory"

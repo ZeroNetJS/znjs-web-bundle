@@ -3,7 +3,7 @@
 function consolePrefix(f, p) {
   return function () {
     const a = [...arguments]
-    if (typeof a[0] == "string") a.unshift("[" + p + "] " + a[0])
+    if (typeof a[0] == "string") a.unshift("[" + p + "] " + a.shift())
     else a.unshift("[" + p + "]")
     f.apply(console, a)
   }

@@ -7,13 +7,19 @@ window.onerror = function (messageOrEvent, source, lineno, colno, error) {
 };
 
 const $ = window.$ = require("jquery")
+const moment = require("moment")
 
 $(document).ready(() => (function () {
   'use strict'
 
   function addToLog() {
     let t = [...arguments].join(" ").split("\n")
-    t.unshift("[" + new Date() + "] " + t.shift())
+    const d = moment(new Date()).format("HH:mm:ss.SSS[Z]")
+    if (typeof t[0] == "string") {
+      t.unshift("[" + d + "] " + t.shift())
+    } else {
+      t.unshift("[" + d + "]")
+    }
     t.forEach(t => {
       const d = $("<p></p>")
       let p = false
