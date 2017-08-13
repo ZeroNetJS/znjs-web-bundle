@@ -8,9 +8,9 @@
     "build": "browserify . -d -o bundle.main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "ln -fs ../node_modules/is-buffer zeronet && rm -rf node_modules/debug && ln -s ../debug node_modules/debug",
-    "watch": "nodemon -i bundle.main.js -x npm run build",
-    "start": "http-server -p 3000 .",
-    "dist": "browserify . -d | babel -s inline -f bundle.min.js --presets es2015 | uglifyjs --source-map content=inline,url=bundle.min.js.map --compress --mangle -o bundle.min.js"
+    "watch": "watchify . -d -v -o bundle.main.js",
+    "start": "sed 's|bundle.min.js|bundle.main.js|g' index.html -i && http-server -p 3000 .",
+    "dist": "sed 's|bundle.main.js|bundle.min.js|g' index.html -i && browserify . -d | babel -s inline -f bundle.min.js --presets es2015 | uglifyjs --source-map content=inline,url=bundle.min.js.map --compress --mangle -o bundle.min.js"
   },
   "keywords": [
     "zeronet",
@@ -44,8 +44,8 @@
     "http-server": "^0.10.0",
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
-    "nodemon": "^1.11.0",
     "uglify-js": "^3.0.27",
+    "watchify": "^3.9.0",
     "zeronet": "file:zeronet",
     "zeronet-storage-memory": "file:zeronet/zeronet-storage-memory"
   }
