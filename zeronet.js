@@ -13,8 +13,6 @@ window.ZeroNet = module.exports = function ZeroNetBrowser(config, cb) {
 
   const Common = require("./common")
 
-  let cm
-
   const defaults = {
     swarm: {
       protocol: {
@@ -40,21 +38,10 @@ window.ZeroNet = module.exports = function ZeroNetBrowser(config, cb) {
         //"http://localhost:25534/announce"
       ]
     },
-    common: cm = new Common({
+    common: new Common({
       debug: true
     }),
     storage: new MEM()
-  }
-
-  const errCB = err => {
-    if (!err && process.env.TESTOK) process.emit("SIGINT")
-    if (!err) {
-      cm.title("ZeroNetJS")
-      return node.logger("node")("Started successfully")
-    }
-    cm.logger("node").fatal("The node failed to start")
-    cm.logger("node").fatal(err)
-    process.exit(2)
   }
 
   config = MergeRecursive(defaults, config)
@@ -62,7 +49,7 @@ window.ZeroNet = module.exports = function ZeroNetBrowser(config, cb) {
   const Id = require("peer-id")
 
   const liftoff = (err, id) => {
-    if (err) return errCB(err)
+    if (err) return cb(err)
     config.id = id
     node = new ZeroNet(config)
     cb(null, node)
