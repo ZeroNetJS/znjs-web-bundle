@@ -1,3 +1,8 @@
 #logfield p {
   margin-bottom: 0 !important;
 }
+#logfield {
+  max-height: 500px;
+  min-height: 500px;
+  overflow: scroll;
+}
