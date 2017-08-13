@@ -9,17 +9,29 @@ window.onerror = function (messageOrEvent, source, lineno, colno, error) {
 const $ = window.$ = require("jquery")
 const moment = require("moment")
 
+function consoleParse(t) {
+  let rr = t.slice(1)
+  const n = t[0].replace(/%[a-z]/g, function (str) {
+    const r = rr.shift()
+    if (typeof r == "undefined") return str
+    return r
+  })
+  return [n].concat(rr)
+}
+
 $(document).ready(() => (function () {
   'use strict'
 
   function addToLog() {
-    let t = [...arguments].join(" ").split("\n")
     const d = moment(new Date()).format("HH:mm:ss.SSS[Z]")
+    let t = [...arguments]
     if (typeof t[0] == "string") {
       t.unshift("[" + d + "] " + t.shift())
+      t = consoleParse(t)
     } else {
       t.unshift("[" + d + "]")
     }
+    t = t.join(" ").split("\n")
     t.forEach(t => {
       const d = $("<p></p>")
       let p = false
