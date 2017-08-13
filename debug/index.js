@@ -1,4 +1,5 @@
 module.exports = name => {
+  if (typeof window == "undefined") return () => {}
   return function () {
     const a = [...arguments]
     if (typeof a[0] == "string") {

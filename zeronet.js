@@ -46,9 +46,6 @@ window.ZeroNet = module.exports = function ZeroNetBrowser(config, cb) {
     storage: new MEM()
   }
 
-  cm.logger("node")("Starting...")
-  cm.title("ZeroNetJS - Starting...")
-
   const errCB = err => {
     if (!err && process.env.TESTOK) process.emit("SIGINT")
     if (!err) {
