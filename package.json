@@ -10,7 +10,7 @@
     "postinstall": "ln -fs ../node_modules/is-buffer zeronet && rm -rf node_modules/debug && ln -s ../debug node_modules/debug",
     "watch": "nodemon -i bundle.main.js -x npm run build",
     "start": "http-server -p 3000 .",
-    "dist": "browserify . -d | babel -s inline -f bundle.min.js --presets es2015 | uglifyjs --source-map --compress --mangle -o bundle.min.js"
+    "dist": "browserify . -d | babel -s inline -f bundle.min.js --presets es2015 | uglifyjs --source-map content=inline,url=bundle.min.js.map --compress --mangle -o bundle.min.js"
   },
   "keywords": [
     "zeronet",

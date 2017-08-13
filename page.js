@@ -43,7 +43,7 @@ $(document).ready(() => (function () {
     }
   })
 
-  console.info("Prepare launch")
+  console.info("[node] Preparing to launch...")
   $("#node-state").text("Preparing...")
 
   ZeroNet({}, (err, node) => {
