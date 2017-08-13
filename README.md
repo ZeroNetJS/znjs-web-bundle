@@ -7,7 +7,7 @@ There isn't much you can do right now but that won't change until ZeroNetJS is f
 
 # Live
 
-Live demo should be available [here](https://zeronetjs.github.io/web-bundle/)
+Live demo should be available [here](https://zeronetjs.github.io/znjs-web-bundle/)
 
 # Dev
 
