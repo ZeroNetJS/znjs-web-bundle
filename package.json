@@ -38,15 +38,15 @@
   "homepage": "https://github.com/ZeroNetJS/web-bundle#readme",
   "dependencies": {
     "aliasify": "^2.1.0",
-    "babel-cli": "^6.24.1",
+    "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "browserify": "^14.4.0",
     "http-server": "^0.10.0",
     "jquery": "^3.2.1",
+    "libp2p-websockets": "^0.10.1",
     "moment": "^2.18.1",
-    "uglify-js": "^3.0.27",
+    "uglify-js": "^3.0.28",
     "watchify": "^3.9.0",
-    "zeronet": "file:zeronet",
-    "zeronet-storage-memory": "file:zeronet/zeronet-storage-memory"
+    "zeronet": "file:zeronet"
   }
 }

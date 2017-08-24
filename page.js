@@ -58,7 +58,9 @@ $(document).ready(() => (function () {
   console.info("[node] Preparing to launch...")
   $("#node-state").text("Preparing...")
 
-  ZeroNet({}, (err, node) => {
+  ZeroNet({
+    debug: true
+  }, (err, node) => {
     if (err) throw err
     console.info("[node] Ready to launch")
     window.node = node
