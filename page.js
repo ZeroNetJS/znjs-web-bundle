@@ -3,11 +3,12 @@
 let running = false
 
 require("debug").save("*")
+window.debug = require("debug")
 
 const ZeroNet = require("./zeronet.js")
 
 window.onerror = function (messageOrEvent, source, lineno, colno, error) {
-  console.error(messageOrEvent == "Script Error." ? messageOrEvent : error.stack)
+  console.error("%c" + (messageOrEvent == "Script Error." ? messageOrEvent : error.stack), "color: red")
 };
 
 const $ = window.$ = require("jquery")
@@ -22,7 +23,8 @@ function consoleParse(t) {
   let rr = t.slice(1)
   const n = t[0].replace(/%[a-z]/g, function (str) {
     const r = rr.shift()
-    if (typeof r == "undefined") return str
+    if (typeof r == null)
+      return r
     if (str.toLowerCase() == "%c")
       return COLSTART + r + COLEND
     return r
@@ -110,6 +112,8 @@ $(document).ready(() => (function () {
           throw err
         } else {
           $("#node-state").text("Node: Online")
+          require("./controls")($, node)
+          $("#controls").fadeIn("fast")
           console.info("%c[node]%c Online", "font-weight: bold", "color: inherit")
         }
       })

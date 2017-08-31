@@ -6,3 +6,7 @@
   min-height: 500px;
   overflow: auto;
 }
+.flex-center {
+  display: flex;
+  justify-content: space-around;
+}
