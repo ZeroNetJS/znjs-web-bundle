@@ -5,8 +5,9 @@ const disable = bt => bt.css("transition", ".5s").attr("disabled", true)
 module.exports = function ($, node) {
   $("#add-hello").one("click", () => {
     disable($("#add-hello"))
-    new Zite({
+    const z = new Zite({
       address: zhello
     }, node)
+    z.start()
   })
 }

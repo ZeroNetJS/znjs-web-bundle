@@ -2,7 +2,9 @@
 
 let running = false
 
-require("debug").save("*")
+require("debug").save("zeronet*,libp2p*")
+process.env.INTENSE_DEBUG = "1"
+process.env.DEBUG_PACKETS = "1"
 window.debug = require("debug")
 
 const ZeroNet = require("./zeronet.js")
