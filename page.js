@@ -20,6 +20,8 @@ const Common = require("./common")
 const COLSTART = "ȵ"
 const COLEND = "ȶ"
 const COLRESET = "ȷ"
+const MAX_KEEP = 500
+let c_hist = []
 
 function consoleParse(t) {
   let rr = t.slice(1)
@@ -74,7 +76,9 @@ $(document).ready(() => (function () {
         e.text(c)
         d.append(e)
       })
+      c_hist.push(d)
       $("#logfield").append(d)
+      while (c_hist.length >= MAX_KEEP) [c_hist.shift()].forEach(r => $(r).remove())
     })
   }
 

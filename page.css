@@ -1,5 +1,6 @@
 #logfield p {
   margin-bottom: 0 !important;
+  word-break: keep-all;
 }
 #logfield {
   max-height: 500px;
