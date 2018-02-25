@@ -1,5 +1,5 @@
-"use strict"
+'use strict'
 
-require("colors")
+require('colors')
 
-window.ZeroNet = module.exports = require("zeronet")
+window.ZeroNet = module.exports = require('zeronet')
