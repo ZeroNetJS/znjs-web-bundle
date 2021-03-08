@@ -43,7 +43,7 @@
     "libp2p-websockets": "^0.10.5",
     "moment": "^2.20.1",
     "uglify-js": "^3.3.12",
-    "watchify": "^3.10.0",
+    "watchify": "^4.0.0",
     "zeronet": "github:ZeroNetJS/zeronet-js"
   }
 }
